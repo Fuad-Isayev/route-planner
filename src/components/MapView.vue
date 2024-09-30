@@ -1,24 +1,34 @@
 <template>
   <div class="map">
     <l-map :zoom="zoom" :center="center" ref="map" style="width: 100%">
-      <l-tile-layer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        :attribution="attribution"
+      <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <l-polyline
+        :lat-lngs="routeCoordinates"
+        :options="{ color: '#7087FF', weight: 4 }"
       />
-      <l-polyline :lat-lngs="routeCoordinates" />
       <div v-if="routeCoordinates.length">
         <l-marker
           v-for="(marker, index) in loadingMarkers"
           :key="`loading-marker-${index}`"
-          color="red"
           :lat-lng="marker"
-        />
+        >
+          <l-icon
+            ><div class="customMarker">
+              <span>{{ index + 1 }}</span>
+            </div>
+          </l-icon>
+        </l-marker>
         <l-marker
           v-for="(marker, index) in unloadingMarkers"
           :key="`unloading-marker-${index}`"
-          color="red"
           :lat-lng="marker"
-        />
+        >
+          <l-icon
+            ><div class="customMarker">
+              <span>{{ loadings.length + index + 1 }}</span>
+            </div>
+          </l-icon>
+        </l-marker>
       </div>
     </l-map>
   </div>
@@ -26,7 +36,7 @@
 
 <script>
 import { latLng, latLngBounds } from "leaflet";
-import { LMap, LTileLayer, LPolyline, LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer, LPolyline, LMarker, LIcon } from "vue2-leaflet";
 
 export default {
   name: "MapView",
@@ -35,12 +45,12 @@ export default {
     LTileLayer,
     LPolyline,
     LMarker,
+    LIcon,
   },
   data() {
     return {
       zoom: 12,
       center: [52.3459, 9.762],
-      attribution: "© OpenStreetMap contributors",
     };
   },
   computed: {
@@ -82,9 +92,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .map {
   height: calc(100vh - 64px);
   width: calc(100vw - 621px);
+}
+.customMarker {
+  height: 30px;
+  width: 22px;
+  background-image: url("/public/ellipse.svg");
+  text-align: center;
+  span {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
 }
 </style>

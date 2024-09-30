@@ -74,6 +74,4 @@ export default new Vuex.Store({
       state.countriesToAvoid = payload;
     },
   },
-  actions: {},
-  getters: {},
 });
