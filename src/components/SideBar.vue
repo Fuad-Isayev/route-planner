@@ -66,6 +66,7 @@ export default {
   },
   methods: {
     async calculateRoute() {
+      if (this.isLoading) return;
       const coordinates = [...this.loadings, ...this.unloadings];
       try {
         this.isLoading = true;

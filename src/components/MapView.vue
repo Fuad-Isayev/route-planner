@@ -41,8 +41,7 @@ export default {
   data() {
     return {
       zoom: 12,
-      // center: [52.3459, 9.762],
-      center: [52.5309, 13.3847],
+      center: [52.3459, 9.762],
       attribution: "© OpenStreetMap contributors",
     };
   },
