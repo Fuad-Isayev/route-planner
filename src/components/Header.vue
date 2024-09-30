@@ -3,13 +3,13 @@
     <div class="header px-6 py-4">
       <img src="logo.svg" alt="logo" />
       <div>
-        <span
-          ><v-icon color="green" class="mr-4">mdi-check</v-icon> 100% Free</span
-        >
-        <span class="ml-12"
-          ><v-icon color="green" class="mr-4">mdi-check</v-icon> Detailed route
-          information</span
-        >
+        <span>
+          <v-icon color="green" class="mr-4">mdi-check</v-icon> 100% Free
+        </span>
+        <span class="ml-12">
+          <v-icon color="green" class="mr-4">mdi-check</v-icon> Detailed route
+          information
+        </span>
       </div>
     </div>
   </v-app-bar>

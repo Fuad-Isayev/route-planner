@@ -24,9 +24,6 @@ export default {
     SideBar,
     MapView,
   },
-  data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
-  }),
 };
 </script>
 

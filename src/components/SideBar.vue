@@ -9,15 +9,16 @@
       :disabled="submitButtonDisabled"
       block
       class="submitButton mt-3"
-      ><v-progress-circular
+    >
+      <v-progress-circular
         v-if="isLoading"
         indeterminate
         color="white"
         size="24"
         width="2"
-      ></v-progress-circular
-      ><span v-else>Calculate Route</span></v-btn
-    >
+      />
+      <span v-else>Calculate Route</span>
+    </v-btn>
     <hr class="my-10" />
     <RouteDetails :isLoading="isLoading" />
   </div>
@@ -40,7 +41,6 @@ export default {
   },
   data() {
     return {
-      isScriptLoaded: false,
       isLoading: false,
     };
   },
@@ -51,13 +51,9 @@ export default {
     unloadings() {
       return this.$store.state.unloadings;
     },
-    opp() {
-      return this.loadings.every((l) => l.length > 0);
-    },
     submitButtonDisabled() {
       const loadingsAreFilled = this.loadings.every((l) => l.length > 0);
       const unloadingsAreFilled = this.unloadings.every((u) => u.length > 0);
-
       return !loadingsAreFilled || !unloadingsAreFilled;
     },
     countriesToAvoid() {

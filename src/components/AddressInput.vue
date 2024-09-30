@@ -27,7 +27,7 @@
         :disabled="isGoogleAPILoading"
         :append-icon="null"
         hide-no-data
-      ></v-autocomplete>
+      />
     </v-col>
     <v-icon v-if="index !== 0" @click="removeAddress">mdi-close</v-icon>
   </v-row>

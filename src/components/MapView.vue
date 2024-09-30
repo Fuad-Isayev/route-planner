@@ -11,14 +11,12 @@
           v-for="(marker, index) in loadingMarkers"
           :key="`loading-marker-${index}`"
           color="red"
-          v-html="1"
           :lat-lng="marker"
         />
         <l-marker
           v-for="(marker, index) in unloadingMarkers"
           :key="`unloading-marker-${index}`"
           color="red"
-          v-html="2"
           :lat-lng="marker"
         />
       </div>
@@ -61,10 +59,10 @@ export default {
     },
     unloadingMarkers() {
       const markers = this.unloadings.map((unloading) => {
-        if (!unloading.length) return { lat: "", lng: "" };
+        if (!unloading.length) return undefined;
         return latLng(unloading[1], unloading[0]);
       });
-      return markers;
+      return markers.filter((m) => m);
     },
     routeCoordinates() {
       return this.$store.state.steps;
@@ -77,7 +75,6 @@ export default {
     borders(val) {
       if (val) {
         const bounds = new latLngBounds(val);
-
         this.$refs.map.fitBounds(bounds);
       }
     },
@@ -87,7 +84,6 @@ export default {
 
 <style scoped>
 .map {
-  background: #faf0f0;
   height: calc(100vh - 64px);
   width: calc(100vw - 621px);
 }
