@@ -94,7 +94,7 @@ export default {
 
 <style lang="scss" scoped>
 .map {
-  height: calc(100vh - 64px);
+  height: calc(100vh - 77px);
   width: calc(100vw - 621px);
 }
 .customMarker {

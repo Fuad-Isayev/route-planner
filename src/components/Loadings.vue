@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-2">
+  <div class="loadings">
     <div class="header mb-4">
       <h3>Loading</h3>
       <button @click="handleAddLoading">Add loading spot</button>
@@ -48,9 +48,13 @@ export default {
   align-items: baseline;
   button {
     font-weight: 700;
+    color: #121231;
     font-size: 16px;
     border-bottom: 1px solid;
     line-height: 19.2px;
   }
+}
+.loadings {
+  margin-bottom: 14px;
 }
 </style>

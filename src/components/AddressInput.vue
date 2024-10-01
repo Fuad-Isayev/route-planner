@@ -1,6 +1,6 @@
 <template>
-  <v-row class="address-input">
-    <v-col lg="3">
+  <div class="address-input" :class="{ 'additional-address': index > 0 }">
+    <div class="country-select">
       <v-select
         dense
         outlined
@@ -11,26 +11,24 @@
         v-model="selectedCountry"
         :menu-props="{ offsetY: true, maxHeight: '200px' }"
       ></v-select>
-    </v-col>
-    <v-col>
-      <v-autocomplete
-        v-model="selectedAddress"
-        :search-input.sync="query"
-        :items="predictions"
-        :label="isGoogleAPILoading ? 'Loading...' : 'Address'"
-        ref="autocompleteInput"
-        item-text="description"
-        item-value="place_id"
-        placeholder="Address"
-        outlined
-        dense
-        :disabled="isGoogleAPILoading"
-        :append-icon="null"
-        hide-no-data
-      />
-    </v-col>
+    </div>
+    <v-autocomplete
+      v-model="selectedAddress"
+      :search-input.sync="query"
+      :items="predictions"
+      :label="isGoogleAPILoading ? 'Loading...' : 'Address'"
+      ref="autocompleteInput"
+      item-text="description"
+      item-value="place_id"
+      placeholder="Address"
+      outlined
+      dense
+      :disabled="isGoogleAPILoading"
+      :append-icon="null"
+      hide-no-data
+    />
     <v-icon v-if="index !== 0" @click="removeAddress">mdi-close</v-icon>
-  </v-row>
+  </div>
 </template>
 
 <script>
@@ -129,10 +127,19 @@ export default {
 <style lang="scss" scoped>
 .address-input {
   position: relative;
+  display: flex;
+  .country-select {
+    width: 100px;
+    margin-right: 15px;
+  }
+  &.additional-address {
+    margin-top: -10px;
+  }
   button {
     position: absolute;
-    right: -24px;
-    top: 16px;
+    color: #9e9e9e;
+    right: -35px;
+    top: 3px;
     font-size: 32px;
   }
 }

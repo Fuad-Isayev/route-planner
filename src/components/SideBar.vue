@@ -6,9 +6,10 @@
     <MoreFeatures />
     <v-btn
       @click="calculateRoute"
+      large
       :disabled="submitButtonDisabled"
       block
-      class="submitButton mt-3"
+      class="submitButton"
     >
       <v-progress-circular
         v-if="isLoading"
@@ -19,8 +20,7 @@
       />
       <span v-else>Calculate Route</span>
     </v-btn>
-    <hr class="my-10" />
-    <RouteDetails :isLoading="isLoading" />
+    <RouteDetails :isLoading="isLoading" :noRoute="noRoute" />
   </div>
 </template>
 
@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      noRoute: false,
     };
   },
   computed: {
@@ -65,6 +66,7 @@ export default {
       if (this.isLoading) return;
       const coordinates = [...this.loadings, ...this.unloadings];
       try {
+        this.noRoute = false;
         this.isLoading = true;
         const options = { avoid_countries: this.countriesToAvoid };
 
@@ -78,6 +80,7 @@ export default {
         this.$store.commit("setBorders", bbox);
       } catch (error) {
         console.log(error);
+        this.noRoute = true;
       } finally {
         this.isLoading = false;
       }
@@ -90,13 +93,20 @@ export default {
 .sidebar {
   width: 600px;
   padding-top: 64px;
-  height: calc(100vh - 64px);
   .submitButton {
+    margin-top: 14px;
+    background: #e50043;
     text-transform: none;
+    font-family: "Lato";
+    letter-spacing: 0;
     font-size: 16px;
+    line-height: 19.2px;
     font-weight: 700;
     color: #fff;
-    background: #e50043;
+    &.v-btn--disabled {
+      color: #fff !important;
+      background: #9e9e9e !important;
+    }
   }
 }
 </style>

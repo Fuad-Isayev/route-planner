@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-4">
+  <div class="unloadings">
     <div class="header mb-4">
       <h3>Unloading</h3>
       <button @click="handleAddUnloading">Add unloading spot</button>
@@ -48,8 +48,12 @@ export default {
   align-items: baseline;
   button {
     font-weight: 700;
+    color: #121231;
     border-bottom: 1px solid;
     line-height: 19.2px;
   }
+}
+.unloadings {
+  margin-bottom: 14px;
 }
 </style>

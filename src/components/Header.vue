@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar>
-    <div class="header px-6 py-4">
+  <v-app-bar height="77px" class="app-bar">
+    <div class="my-header px-6">
       <img src="logo.svg" alt="logo" />
       <div>
         <span>
@@ -22,9 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
+.app-bar {
+  background: #fff !important;
+}
+.my-header {
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
