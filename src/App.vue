@@ -65,4 +65,7 @@ export default {
     }
   }
 }
+html {
+  overflow-y: auto;
+}
 </style>

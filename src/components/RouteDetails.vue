@@ -47,11 +47,13 @@ export default {
 .route-details {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   .v-card {
     border: 1px solid #9e9e9e;
     border-radius: 8px;
     font-weight: 400;
-    width: 252px;
+    flex: 1;
+    min-width: 0;
     height: 97px;
     i {
       color: #121231;

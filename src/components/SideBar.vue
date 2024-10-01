@@ -93,6 +93,9 @@ export default {
 .sidebar {
   width: 600px;
   padding-top: 64px;
+  padding-bottom: 16px;
+  height: calc(100vh - 77px);
+  overflow: auto;
   .submitButton {
     margin-top: 14px;
     background: #e50043;
