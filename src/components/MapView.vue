@@ -100,6 +100,8 @@ export default {
 .customMarker {
   height: 30px;
   width: 22px;
+  margin-top: -25px;
+  margin-left: -4px;
   background-image: url("/public/ellipse.svg");
   text-align: center;
   span {
