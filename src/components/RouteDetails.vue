@@ -1,5 +1,5 @@
 <template>
-  <div v-if="duration && !isLoading">
+  <div v-if="(duration || noRoute) && !isLoading">
     <hr class="my-16" />
     <h2 class="mb-8">Route details</h2>
     <div v-if="noRoute" class="alert">
